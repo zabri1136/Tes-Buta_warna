@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tes Buta Warna Online</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">Color<span class="highlight">Check</span></h1>
+        </div>
+    </nav>
+
+    <!-- MAIN PAGE -->
+    <main id="app">
+        <!-- HERO SECTION -->
+        <section id="home" class="view active">
+            <div class="container hero-layout">
+                <div class="hero-text">
+                    <h2>Cek Penglihatan Warna Anda</h2>
+                    <p class="lead">Apakah dunia terlihat sedikit berbeda bagi Anda? Ikuti tes cepat ini untuk
+                        mengetahui kemungkinan buta warna. Ingat, ini hanya simulasi dan hiburan, bukan diagnosis medis.
+                    </p>
+                    <button class="btn btn-primary btn-lg" onclick="scrollToSection('test-selection')">Mulai Tes
+                        Sekarang</button>
+
+                    <div class="info-badges">
+                        <div class="badge">
+                            <span class="icon">🧬</span>
+                            <span>Seringkali Genetik</span>
+                        </div>
+                        <div class="badge">
+                            <span class="icon">💼</span>
+                            <span>Mempengaruhi Karir Tertentu</span>
+                        </div>
+                        <div class="badge">
+                            <span class="icon">👍</span>
+                            <span>Tidak Berbahaya</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <!-- Dynamic Decorative Plates -->
+                    <div class="deco-plates-container">
+                        <canvas id="hero-plate-1" width="150" height="150" class="floating-plate"></canvas>
+                        <canvas id="hero-plate-2" width="100" height="100" class="floating-plate small"></canvas>
+                        <img src="hero_eye.png" alt="Perbandingan mata normal dan buta warna" class="main-hero-img">
+                    </div>
+                </div>
+            </div>
+
+            <div class="container info-section">
+                <div class="info-card">
+                    <h3>Tentang Buta Warna</h3>
+                    <p>Buta warna adalah penurunan kualitas penglihatan terhadap warna yang umumnya diturunkan dari
+                        orang tua. Sebagian besar orang buta warna masih bisa melihat warna, tapi kesulitan membedakan
+                        warna tertentu (biasanya merah dan hijau).</p>
+                </div>
+                <div class="info-card">
+                    <h3>Tips Sehari-hari</h3>
+                    <p>Gunakan label nama warna pada pakaian, atur urutan 'tindakan' pada lampu lalu lintas, dan gunakan
+                        aplikasi smartphone pendeteksi warna untuk membantu identifikasi objek.</p>
+                </div>
+                <div class="info-card warning">
+                    <h3>Kapan Harus ke Dokter?</h3>
+                    <p>Jika Anda merasa kesulitan membedakan warna secara tiba-tiba atau ini mempengaruhi
+                        pekerjaan/sekolah, segera konsultasikan ke dokter mata untuk pemeriksaan komprehensif.</p>
+                </div>
+            </div>
+
+            <!-- Added decorative divider with generated plates explanation or just visuals -->
+            <div class="container" style="text-align:center; padding: 2rem 0;">
+                <h3 style="margin-bottom:1rem; color:var(--secondary);">Contoh Plate Ishihara Statis</h3>
+                <div class="visual-gallery">
+                    <!-- We will auto-generate patterns here via JS -->
+                    <canvas id="gallery-plate-1" width="120" height="120"></canvas>
+                    <canvas id="gallery-plate-2" width="120" height="120"></canvas>
+                    <canvas id="gallery-plate-3" width="120" height="120"></canvas>
+                    <canvas id="gallery-plate-4" width="120" height="120"></canvas>
+                </div>
+            </div>
+
+            <div id="test-selection" class="container test-selection">
+                <h2 class="section-title">Pilih Jenis Tes</h2>
+                <div class="cards-grid">
+                    <div class="card" onclick="app.showLevels('ishihara')">
+                        <div class="card-icon">🔢</div>
+                        <h3>Tes Ishihara</h3>
+                        <p>Tebak angka atau garis yang tersembunyi di antara titik-titik warna.</p>
+                        <span class="tag">Populer</span>
+                    </div>
+                    <div class="card" onclick="app.showLevels('cambridge')">
+                        <div class="card-icon">🎯</div>
+                        <h3>Cambridge Test</h3>
+                        <p>Temukan bentuk 'C' yang memiliki warna berbeda tipis dari latar belakang.</p>
+                        <span class="tag">Akurasi Tinggi</span>
+                    </div>
+                    <div class="card" onclick="app.showLevels('reaction')">
+                        <div class="card-icon">⚡</div>
+                        <h3>Tes Reaksi</h3>
+                        <p>Uji seberapa cepat mata Anda menangkap perubahan warna.</p>
+                        <span class="tag">Cepat</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LEVEL SELECTION MODAL (New View) -->
+        <section id="level-selection" class="view">
+            <div class="container level-container">
+                <button class="btn btn-secondary" onclick="app.goHome()">← Kembali</button>
+                <div class="level-content">
+                    <h2 id="level-title">Pilih Tingkat Kesulitan</h2>
+                    <p class="lead">Seberapa menantang tes yang Anda inginkan?</p>
+
+                    <div class="level-cards">
+                        <div class="level-card" onclick="app.selectLevel('easy')">
+                            <h3>🌱 Gampang</h3>
+                            <p id="desc-easy">5 Soal - Durasi Singkat</p>
+                        </div>
+                        <div class="level-card featured" onclick="app.selectLevel('medium')">
+                            <h3>⚖️ Sedang</h3>
+                            <p id="desc-medium">10 Soal - Standar</p>
+                            <span class="rec-badge">Direkomendasikan</span>
+                        </div>
+                        <div class="level-card" onclick="app.selectLevel('hard')">
+                            <h3>🔥 Susah</h3>
+                            <p id="desc-hard">15 Soal - Kompleks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEST INTERFACE -->
+        <section id="test-runner" class="view">
+            <div class="container test-container">
+                <div class="test-header">
+                    <button class="btn btn-secondary" onclick="app.goHome()">← Batal</button>
+                    <div>
+                        <h2 id="test-title-run">Nama Tes</h2>
+                        <span id="difficulty-badge" class="badge">Medium</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="progress" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div id="game-area" class="game-area">
+                    <canvas id="test-canvas"></canvas>
+                </div>
+
+                <div id="controls" class="controls">
+                    <!-- Dynamic inputs based on test -->
+                </div>
+            </div>
+        </section>
+
+        <!-- RESULTS SECTION -->
+        <section id="results" class="view">
+            <div class="container result-container">
+                <h2>Hasil Tes Anda</h2>
+                <div class="score-display">
+                    <span id="score-value">80%</span>
+                    <p id="score-label">Benar</p>
+                </div>
+
+                <div class="result-details">
+                    <h3>Analisa Singkat</h3>
+                    <p id="result-text">Anda memiliki penglihatan warna normal.</p>
+                    <p class="suggestion">Saran: Tetap jaga kesehatan mata Anda!</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="app.retryTest()">Coba Lagi</button>
+                    <button class="btn btn-primary" onclick="app.goHome()">Kembali ke Beranda</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>⚠️ <strong>Catatan Penting:</strong> Hasil tes ini sangat dipengaruhi oleh kualitas layar perangkat,
+                pencahayaan ruangan, dan kalibrasi warna monitor Anda. Website ini dibuat hanya untuk tujuan hiburan dan
+                edukasi, bukan sebagai alat diagnosa medis yang akurat. Selalu konsultasikan dengan dokter mata
+                profesional.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="ishihara.js"></script>
+    <script src="cambridge.js"></script>
+    <script src="reaction.js"></script>
+    <!-- New script for decorative visuals -->
+    <script src="visuals.js"></script>
+</body>
+
+</html>
