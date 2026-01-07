@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tes Buta Warna Online</title>
+    <title>Color Blindness Test Orginz</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
@@ -13,7 +13,7 @@
 
     <nav class="navbar">
         <div class="container">
-            <h1 class="logo">Color<span class="highlight">Check</span></h1>
+            <h1 class="logo">Color Blindness Test <span class="highlight">Orginz</span></h1>
         </div>
     </nav>
 
@@ -23,98 +23,171 @@
         <section id="home" class="view active">
             <div class="container hero-layout">
                 <div class="hero-text">
-                    <h2>Cek Penglihatan Warna Anda</h2>
-                    <p class="lead">Apakah dunia terlihat sedikit berbeda bagi Anda? Ikuti tes cepat ini untuk
-                        mengetahui kemungkinan buta warna. Ingat, ini hanya simulasi dan hiburan, bukan diagnosis medis.
-                    </p>
-                    <button class="btn btn-primary btn-lg" onclick="scrollToSection('test-selection')">Mulai Tes
-                        Sekarang</button>
+                    <h2>Eksplorasi Warna Mata Anda</h2>
+                    <p class="lead">Temukan spektrum penglihatan Anda melalui serangkaian tes standar medis yang
+                        didesain interaktif. Dari Ishihara hingga uji nuansa warna yang presisi.</p>
+                    <button class="btn btn-primary btn-lg" onclick="app.switchView('test-menu')">Mulai
+                        Eksplorasi</button>
 
                     <div class="info-badges">
-                        <div class="badge">
-                            <span class="icon">🧬</span>
-                            <span>Seringkali Genetik</span>
-                        </div>
-                        <div class="badge">
-                            <span class="icon">💼</span>
-                            <span>Mempengaruhi Karir Tertentu</span>
-                        </div>
-                        <div class="badge">
-                            <span class="icon">👍</span>
-                            <span>Tidak Berbahaya</span>
-                        </div>
+                        <div class="badge"><span class="icon">🔬</span><span>Standar Medis</span></div>
+                        <div class="badge"><span class="icon">⚡</span><span>Hasil Instan</span></div>
+                        <div class="badge"><span class="icon">👁️</span><span>Aman untuk Mata</span></div>
                     </div>
                 </div>
+                <!-- Dynamic Decorative Plates with Retina Image Overlay -->
                 <div class="hero-image">
-                    <!-- Dynamic Decorative Plates -->
                     <div class="deco-plates-container">
                         <canvas id="hero-plate-1" width="150" height="150" class="floating-plate"></canvas>
                         <canvas id="hero-plate-2" width="100" height="100" class="floating-plate small"></canvas>
-                        <img src="hero_eye.png" alt="Perbandingan mata normal dan buta warna" class="main-hero-img">
+                        <img src="retina_cones.png" alt="Ilustrasi Retina dan Sel Kerucut" class="main-hero-img"
+                            style="border-radius:20px;">
                     </div>
                 </div>
             </div>
 
             <div class="container info-section">
-                <div class="info-card">
-                    <h3>Tentang Buta Warna</h3>
-                    <p>Buta warna adalah penurunan kualitas penglihatan terhadap warna yang umumnya diturunkan dari
-                        orang tua. Sebagian besar orang buta warna masih bisa melihat warna, tapi kesulitan membedakan
-                        warna tertentu (biasanya merah dan hijau).</p>
-                </div>
-                <div class="info-card">
-                    <h3>Tips Sehari-hari</h3>
-                    <p>Gunakan label nama warna pada pakaian, atur urutan 'tindakan' pada lampu lalu lintas, dan gunakan
-                        aplikasi smartphone pendeteksi warna untuk membantu identifikasi objek.</p>
-                </div>
-                <div class="info-card warning">
-                    <h3>Kapan Harus ke Dokter?</h3>
-                    <p>Jika Anda merasa kesulitan membedakan warna secara tiba-tiba atau ini mempengaruhi
-                        pekerjaan/sekolah, segera konsultasikan ke dokter mata untuk pemeriksaan komprehensif.</p>
-                </div>
-            </div>
-
-            <!-- Added decorative divider with generated plates explanation or just visuals -->
-            <div class="container" style="text-align:center; padding: 2rem 0;">
-                <h3 style="margin-bottom:1rem; color:var(--secondary);">Contoh Plate Ishihara Statis</h3>
-                <div class="visual-gallery">
-                    <!-- We will auto-generate patterns here via JS -->
-                    <canvas id="gallery-plate-1" width="120" height="120"></canvas>
-                    <canvas id="gallery-plate-2" width="120" height="120"></canvas>
-                    <canvas id="gallery-plate-3" width="120" height="120"></canvas>
-                    <canvas id="gallery-plate-4" width="120" height="120"></canvas>
-                </div>
-            </div>
-
-            <div id="test-selection" class="container test-selection">
-                <h2 class="section-title">Pilih Jenis Tes</h2>
-                <div class="cards-grid">
-                    <div class="card" onclick="app.showLevels('ishihara')">
-                        <div class="card-icon">🔢</div>
-                        <h3>Tes Ishihara</h3>
-                        <p>Tebak angka atau garis yang tersembunyi di antara titik-titik warna.</p>
-                        <span class="tag">Populer</span>
+                <!-- Educational Split Section -->
+                <div class="info-card wide-card">
+                    <div class="split-layout">
+                        <div class="text-content">
+                            <h3>Bagaimana Kita Melihat Warna?</h3>
+                            <p>Mata manusia memiliki sel fotoreseptor khusus yang disebut <strong>Sel Kerucut
+                                    (Cones)</strong>. Normalnya, kita memiliki 3 jenis:</p>
+                            <ul class="styled-list">
+                                <li><strong>L-Cones:</strong> Peka terhadap cahaya Merah (Long wave).</li>
+                                <li><strong>M-Cones:</strong> Peka terhadap cahaya Hijau (Medium wave).</li>
+                                <li><strong>S-Cones:</strong> Peka terhadap cahaya Biru (Short wave).</li>
+                            </ul>
+                            <p>Buta warna terjadi ketika satu atau lebih jenis sel ini hilang atau bergeser
+                                sensitivitasnya.</p>
+                        </div>
+                        <div class="image-content">
+                            <img src="vision_compare.png" alt="Perbandingan Penglihatan Normal vs Buta Warna"
+                                class="feature-img">
+                            <p class="caption">Simulasi: Kiri (Penglihatan Normal) vs Kanan (Deuteranopia/Buta Hijau)
+                            </p>
+                        </div>
                     </div>
-                    <div class="card" onclick="app.showLevels('cambridge')">
-                        <div class="card-icon">🎯</div>
-                        <h3>Cambridge Test</h3>
-                        <p>Temukan bentuk 'C' yang memiliki warna berbeda tipis dari latar belakang.</p>
-                        <span class="tag">Akurasi Tinggi</span>
+                </div>
+
+                <div class="info-wrapper">
+                    <div class="info-card warning">
+                        <h3>⚠️ Disclaimer Medis</h3>
+                        <p>Website ini adalah simulasi edukasi. Hasil tes ini <strong>BUKAN DIAGNOSIS FINAL</strong>.
+                            Faktor layar, kalibrasi warna, dan kelelahan mata sangat berpengaruh. Selalu kunjungi Dokter
+                            Mata (Ophthalmologist) untuk hasil yang akurat.</p>
                     </div>
-                    <div class="card" onclick="app.showLevels('reaction')">
-                        <div class="card-icon">⚡</div>
-                        <h3>Tes Reaksi</h3>
-                        <p>Uji seberapa cepat mata Anda menangkap perubahan warna.</p>
-                        <span class="tag">Cepat</span>
+                    <div class="info-card tips">
+                        <h3>💡 Instruksi Kesehatan</h3>
+                        <ul>
+                            <li>Pastikan kecerahan layar 50-70%.</li>
+                            <li>Hindari silau (glare) pada layar.</li>
+                            <li>Jarak pandang ideal: 50-70 cm.</li>
+                            <li>Istirahatkan mata setiap 20 menit.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- LEVEL SELECTION MODAL (New View) -->
+        <!-- TEST MENU VIEW (New Separate Section) -->
+        <section id="test-menu" class="view">
+            <div class="container test-selection">
+                <button class="btn btn-secondary" onclick="app.goHome()" style="margin-bottom: 2rem;">← Kembali</button>
+                <h2 class="section-title">Pilih Metode Tes</h2>
+                <div class="cards-grid">
+                    <!-- Standard Tests -->
+                    <div class="card" onclick="app.showTestDetails('ishihara')">
+                        <div class="card-icon">🔢</div>
+                        <h3>Tes Ishihara</h3>
+                        <p>Mengidentifikasi angka tersembunyi. Standar paling umum untuk buta warna Merah-Hijau.</p>
+                        <span class="tag">Umum</span>
+                    </div>
+
+                    <div class="card" onclick="app.showTestDetails('hrr')">
+                        <div class="card-icon">🔺</div>
+                        <h3>Hardy-Rand-Rittler (HRR)</h3>
+                        <p>Mengidentifikasi bentuk geometris (Segitiga, Lingkaran, X). Efektif untuk mendeteksi defek
+                            Biru-Kuning (Tritan).</p>
+                        <span class="tag">Geometris</span>
+                    </div>
+
+                    <div class="card" onclick="app.showTestDetails('farnsworth')">
+                        <div class="card-icon">🌈</div>
+                        <h3>Farnsworth Munsell 100</h3>
+                        <p>Mengurutkan balok warna berdasarkan gradasi (Hue). Menguji kemampuan detil membedakan nuansa
+                            warna.</p>
+                        <span class="tag">Detail</span>
+                    </div>
+
+                    <div class="card" onclick="app.showTestDetails('anomaloscope')">
+                        <div class="card-icon">🎛️</div>
+                        <h3>Anomaloscope</h3>
+                        <p>Mencocokkan warna kuning murni dengan mencampur cahaya Merah dan Hijau. Standar emas diagnosa
+                            klinis.</p>
+                        <span class="tag">Klinis</span>
+                    </div>
+
+                    <div class="card" onclick="app.showTestDetails('cambridge')">
+                        <div class="card-icon">🎯</div>
+                        <h3>Cambridge Test</h3>
+                        <p>Menemukan orientasi huruf 'C' pada pola acak. Lebih sensitif dibanding Ishihara.</p>
+                        <span class="tag">Digital</span>
+                    </div>
+
+                    <div class="card" onclick="app.showTestDetails('reaction')">
+                        <div class="card-icon">⚡</div>
+                        <h3>Tes Reaksi</h3>
+                        <p>Game cepat untuk menguji respons saraf mata terhadap perubahan warna mendadak.</p>
+                        <span class="tag">Refleks</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEST INTRO VIEW (New) -->
+        <section id="test-intro" class="view">
+            <div class="container intro-container text-center">
+                <button class="btn btn-secondary back-btn" onclick="app.switchView('test-menu')" style="float:left">←
+                    Kembali</button>
+                <div class="clearfix"></div>
+
+                <div class="intro-content">
+                    <div class="icon-header" id="intro-icon" style="font-size: 4rem; margin-bottom: 20px;">🔬</div>
+                    <h2 id="intro-title" style="margin-bottom: 10px;">Judul Tes</h2>
+                    <span class="tag" id="intro-tag"
+                        style="position:relative; top:0; right:0; display:inline-block; margin-bottom:30px;">Medis</span>
+
+                    <div class="info-grid"
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; text-align: left;">
+                        <div class="info-box"
+                            style="background:white; padding:20px; border-radius:16px; border:1px solid #e2e8f0;">
+                            <h4 style="margin-bottom:10px; color:var(--primary);">🧐 Pengertian</h4>
+                            <p id="intro-desc" style="color:var(--text-secondary);">Deskripsi tes...</p>
+                        </div>
+                        <div class="info-box"
+                            style="background:white; padding:20px; border-radius:16px; border:1px solid #e2e8f0;">
+                            <h4 style="margin-bottom:10px; color:var(--primary);">⚙️ Cara Kerja</h4>
+                            <p id="intro-mechanism" style="color:var(--text-secondary);">Mekanisme...</p>
+                        </div>
+                        <div class="info-box highlight-box"
+                            style="background:#f0f9ff; padding:20px; border-radius:16px; border:1px solid #2563eb;">
+                            <h4 style="margin-bottom:10px; color:var(--primary-dark);">🏥 Kegunaan Medis</h4>
+                            <p id="intro-medical" style="color:#1e3a8a;">Kegunaan...</p>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-lg mt-4" style="margin-top: 40px;"
+                        onclick="app.proceedToLevels()">Pilih Tingkat Kesulitan →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- LEVEL SELECTION MODAL -->
         <section id="level-selection" class="view">
             <div class="container level-container">
-                <button class="btn btn-secondary" onclick="app.goHome()">← Kembali</button>
+                <button class="btn btn-secondary" onclick="app.switchView('test-intro')">← Kembali</button>
                 <div class="level-content">
                     <h2 id="level-title">Pilih Tingkat Kesulitan</h2>
                     <p class="lead">Seberapa menantang tes yang Anda inginkan?</p>
@@ -122,16 +195,16 @@
                     <div class="level-cards">
                         <div class="level-card" onclick="app.selectLevel('easy')">
                             <h3>🌱 Gampang</h3>
-                            <p id="desc-easy">5 Soal - Durasi Singkat</p>
+                            <p id="desc-easy">5 Soal/Ronde - Durasi Singkat</p>
                         </div>
                         <div class="level-card featured" onclick="app.selectLevel('medium')">
                             <h3>⚖️ Sedang</h3>
-                            <p id="desc-medium">10 Soal - Standar</p>
+                            <p id="desc-medium">10 Soal/Ronde - Standar</p>
                             <span class="rec-badge">Direkomendasikan</span>
                         </div>
                         <div class="level-card" onclick="app.selectLevel('hard')">
                             <h3>🔥 Susah</h3>
-                            <p id="desc-hard">15 Soal - Kompleks</p>
+                            <p id="desc-hard">15 Soal/Ronde - Kompleks</p>
                         </div>
                     </div>
                 </div>
@@ -142,7 +215,7 @@
         <section id="test-runner" class="view">
             <div class="container test-container">
                 <div class="test-header">
-                    <button class="btn btn-secondary" onclick="app.goHome()">← Batal</button>
+                    <button class="btn btn-secondary" onclick="app.switchView('level-selection')">← Batal</button>
                     <div>
                         <h2 id="test-title-run">Nama Tes</h2>
                         <span id="difficulty-badge" class="badge">Medium</span>
@@ -154,6 +227,10 @@
 
                 <div id="game-area" class="game-area">
                     <canvas id="test-canvas"></canvas>
+                </div>
+
+                <div id="description-area" class="description-area hidden">
+                    <!-- Instruction text for interactive tests like Farnsworth -->
                 </div>
 
                 <div id="controls" class="controls">
@@ -198,7 +275,9 @@
     <script src="ishihara.js"></script>
     <script src="cambridge.js"></script>
     <script src="reaction.js"></script>
-    <!-- New script for decorative visuals -->
+    <script src="hrr.js"></script>
+    <script src="farnsworth.js"></script>
+    <script src="anomaloscope.js"></script>
     <script src="visuals.js"></script>
 </body>
 
